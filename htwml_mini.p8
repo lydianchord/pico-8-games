@@ -10,7 +10,6 @@ __lua__
 
 
 goal = 15000
---goal = 15000
 
 col_cycle = {3, 11, 7, 11}
 
@@ -351,7 +350,7 @@ function begin_game()
 	})
 	player.r_lim = 128 - player.w
  
- bg_stars = make_bg_stars(25)
+	bg_stars = make_bg_stars(25)
 	stars = {}
 	traps = {}
 end
