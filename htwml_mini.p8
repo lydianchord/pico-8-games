@@ -251,10 +251,10 @@ end
 function text_rect(s, x, y)
 	rectfill(
 		x - 1,
-	 y - 1,
-	 x + #s * 4 - 1,
-	 y + 5,
-	 0
+		y - 1,
+		x + #s * 4 - 1,
+		y + 5,
+		0
 	)
 end
 
