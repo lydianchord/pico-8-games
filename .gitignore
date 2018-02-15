@@ -2,4 +2,5 @@
 *.html
 *.js
 _ignore/
+art/
 demos/
