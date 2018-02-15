@@ -20,7 +20,7 @@ end_text = {
 	"please don't cry..."
 }
 
-states = {
+state = {
 	title = 0,
 	main = 1,
 	fail = 2,
@@ -321,7 +321,7 @@ function title_screen()
 		music(0)
 	end
 	
-	mode = states.title
+	mode = state.title
 	t = 0
 end
 
@@ -330,7 +330,7 @@ function begin_game()
 	fade(7)
 	music(7)
 	
-	mode = states.main
+	mode = state.main
 	t = 0
 	distance = 0
 	spawn_pt = 8
@@ -371,13 +371,13 @@ end
 -- update
 
 function _update60()
-	if mode == states.main then
+	if mode == state.main then
 		if speed <= 0 and
 		   distance < goal
 		then
 			fade(0)
 			music(4)
-			mode = states.fail
+			mode = state.fail
 			return
 		end
 		
@@ -483,7 +483,7 @@ function _update60()
 			if space.y > 60 then
 				fade(7)
 				music(0)
-				mode = states.ending
+				mode = state.ending
 			end
 		end
 		
@@ -522,21 +522,21 @@ function _update60()
 		end
 	
 	
-	elseif mode == states.title then
+	elseif mode == state.title then
 		t += 1
 		if btn(❎) then
 			begin_game()
 		end
 	
 	
-	elseif mode == states.fail then
+	elseif mode == state.fail then
 		if btn(❎) then
 			sfx(29)
 			fade(0)
 			title_screen()
 		end
 	
-	elseif mode == states.ending then
+	elseif mode == state.ending then
 		if btn(❎) then
 			sfx(29)
 			fade(0, true)
@@ -552,7 +552,7 @@ function _draw()
 	camera()
 	cls()
 	
-	if mode == states.main then
+	if mode == state.main then
 		if shake_time > 0 and
 		   speed > 0
 		then
@@ -610,7 +610,7 @@ function _draw()
 		)
 	
 	
-	elseif mode == states.title then
+	elseif mode == state.title then
 		for bg_st in all(bg_stars) do
 			bg_st:draw()
 		end
@@ -641,7 +641,7 @@ function _draw()
 		end
 	
 	
-	elseif mode == states.fail then
+	elseif mode == state.fail then
 		local text = {
 			"rewinding...",
 			"",
@@ -650,7 +650,7 @@ function _draw()
 		print_lines(text, 52, 14)
 	
 	
-	elseif mode == states.ending then
+	elseif mode == state.ending then
 		cls(7)
 		local text = {
 			'"' .. chosen_end_text .. '"',
